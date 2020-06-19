@@ -4,6 +4,11 @@
 /* Create variables for principal, interest rate, and years. Assign them the values 200000, 0.05, and 30 respectively. Create another value called name and give it the value of your own name.
 */
 
+let principal = 200000;
+let interestRate = 0.05;
+let years = 30;
+let name = 'Harrison';
+
 
 
 
@@ -14,6 +19,14 @@
 (1) Create a variable called `monthlyInterestRate` and give it the value of interest rate divided by 12. 
 (2) Create another variable called `periods` and give it the value of years*12.
 */
+
+let monthlyInterestRateon = interestRate / 12
+
+console.log(monthlyInterestRateon)
+
+let periods = years*12
+
+console.log(periods)
 
 
 
