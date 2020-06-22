@@ -92,11 +92,11 @@ For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
 
-function mortgageCalculator(principal, interestRate, periods){
-    const monthlyInterestRate = interestRate / 12
-    const annual = periods * 12
-    const n1 = Math.pow(1 + monthlyInterestRate, annual);
-    const numerator = principal * monthlyInterestRate * n1
+function mortgageCalculator(P, I, N){
+    const monthlyInterestRate = I / 12
+    const years = N * 12
+    const n1 = Math.pow(1 + monthlyInterestRate, years);
+    const numerator = P * monthlyInterestRate * n1
     const denominator = n1 - 1
     const monthlyRate = (numerator / denominator).toFixed(2)
 
@@ -120,22 +120,22 @@ Then, add control flow within your function such that IF creditScore is above 74
 Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by 0.95. Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05. 
 */
 
-function mortgageCalculator(principal, interestRate, periods, creditScore){
+function mortgageCalculator(P, I, N, creditScore){
 
     if (creditScore > 740){
-        interestRate = interestRate * 0.95;
+        I = I * 0.95;
     } else if (creditScore < 660) {
-        interestRate = interestRate * 1.05;
+        I = I * 1.05;
     } else {
-        interestRate = 0.05;
+        I = 0.05;
     }
 
     
 
-    const monthlyInterestRate = interestRate / 12
-    const annual = periods * 12
-    const n1 = Math.pow(1 + monthlyInterestRate, annual);
-    const numerator = principal * monthlyInterestRate * n1
+    const monthlyInterestRate = I / 12
+    const years = N * 12
+    const n1 = Math.pow(1 + monthlyInterestRate, years);
+    const numerator = P * monthlyInterestRate * n1
     const denominator = n1 - 1
     const monthlyRate = (numerator / denominator).toFixed(2)
 
@@ -165,9 +165,33 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
-function variableInterestRate(principal, interestRate, periods){
+
+function variableInterestRate(P, I, N){
+
+        // for (let i = 0; i < 10; i++) {
+        //     console.log({monthlyRate});
+        // }
+
+    const monthlyInterestRate = I / 12
+    const years = N * 12
+    const n1 = Math.pow(1 + monthlyInterestRate, years);
+    const numerator = P * monthlyInterestRate * n1
+    const denominator = n1 - 1
+    const monthlyRate = (numerator / denominator).toFixed(2)
+
+    return {I},{monthlyRate};
     
-}
+
+
+
+
+    }
+
+    for (let i = 0; i < 10; i++) {
+        console.log(name + ", with an interest rate of, your monthly rate is " + (monthlyRate).toFixed(2));
+    }
+// console.log(mortgageCalculator(200000, 0.05, 30))
+
 
 
 
