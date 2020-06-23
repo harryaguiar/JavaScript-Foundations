@@ -193,6 +193,32 @@ function variableInterestRate(P, I, N){
 
 /*  🏡 Add  `Property Tax`, `Homeowner's insurance` and `HOA fees` as parameters in your function to calculate total monthly spending on housing */
 
+function totalMonthlyCost(P, I, N, creditScore, propertyTax, homeInsurance, HOA){
+
+    if (creditScore > 740){
+        I = I * 0.95;
+    } else if (creditScore < 660) {
+        I = I * 1.05;
+    } else {
+        I = 0.05;
+    }
+
+    
+    let OtherExpenses = propertyTax + homeInsurance + HOA
+    const monthlyInterestRate = I / 12
+    const years = N * 12
+    const n1 = Math.pow(1 + monthlyInterestRate, years);
+    const numerator = P * monthlyInterestRate * n1
+    const denominator = n1 - 1
+    const monthlyRate = (numerator / denominator).toFixed(2)
+
+    MonthlyCost = Number(OtherExpenses) + Number(monthlyRate)
+
+    console.log(`${MonthlyCost}`);
+
+}
+
+totalMonthlyCost(200000, 0.04, 30, 550, 30, 101, 60)
 
 /* 🏡 Build a calculator function that accepts `monthly payment` and `interest rate` and returns the maximum loan that a person could afford */
 
