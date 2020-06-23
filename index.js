@@ -204,7 +204,7 @@ function totalMonthlyCost(P, I, N, creditScore, propertyTax, homeInsurance, HOA)
     }
 
     
-    let OtherExpenses = propertyTax + homeInsurance + HOA
+    let OtherExpenses = (propertyTax / 12) + (homeInsurance / 12) + HOA
     const monthlyInterestRate = I / 12
     const years = N * 12
     const n1 = Math.pow(1 + monthlyInterestRate, years);
@@ -214,11 +214,11 @@ function totalMonthlyCost(P, I, N, creditScore, propertyTax, homeInsurance, HOA)
 
     MonthlyCost = Number(OtherExpenses) + Number(monthlyRate)
 
-    console.log(`${MonthlyCost}`);
+    console.log(`${MonthlyCost.toFixed(2)}`);
 
 }
 
-totalMonthlyCost(200000, 0.04, 30, 550, 30, 101, 60)
+totalMonthlyCost(200000, 0.04, 30, 550, 1200, 1010, 60)
 
 /* 🏡 Build a calculator function that accepts `monthly payment` and `interest rate` and returns the maximum loan that a person could afford */
 
