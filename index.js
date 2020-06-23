@@ -166,32 +166,24 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 */
 
 
-function variableInterestRate(P, I, N){
+function variableInterestRate(P, I, N){    
+    for (let i = I - 0.02; i < I + 0.02; i += .005) {
+        const monthlyInterestRate = i / 12
+        const years = N * 12
+        const n1 = Math.pow(1 + monthlyInterestRate, years);
+        const numerator = P * monthlyInterestRate * n1
+        const denominator = n1 - 1
+        const monthlyRate = (numerator / denominator).toFixed(0)
+       
 
-        // for (let i = 0; i < 10; i++) {
-        //     console.log({monthlyRate});
-        // }
+        console.log(`${name}, with an interest rate of ${i.toFixed(3)}, your monthly rate is $${monthlyRate}`);
+     
+    }
 
-    const monthlyInterestRate = I / 12
-    const years = N * 12
-    const n1 = Math.pow(1 + monthlyInterestRate, years);
-    const numerator = P * monthlyInterestRate * n1
-    const denominator = n1 - 1
-    const monthlyRate = (numerator / denominator).toFixed(2)
+    }
 
-    return {I},{monthlyRate};
+    variableInterestRate(200000, 0.04, 30);
     
-
-
-
-
-    }
-
-    for (let i = 0; i < 10; i++) {
-        console.log(name + ", with an interest rate of, your monthly rate is " + (monthlyRate).toFixed(2));
-    }
-// console.log(mortgageCalculator(200000, 0.05, 30))
-
 
 
 
